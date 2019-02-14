@@ -1,6 +1,6 @@
 package com.leo.easy.problem104;
 
-import org.junit.Assert;
+import com.leo.common.TreeNode;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -26,16 +26,16 @@ import static org.junit.Assert.assertEquals;
  */
 public class Solution {
 
+    private int maxDepth(TreeNode root) {
+        return root == null ? 0
+                : Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    }
+
     @Test
     public void test() {
         Integer[] treeData = {3, 9, 20, null, null, 15, 7};
-        ThreeNode testTree = ThreeNode.buildByQueue(treeData);
-        ThreeNode.print(testTree);
+        TreeNode testTree = TreeNode.buildByQueue(treeData);
+        TreeNode.print(testTree);
         assertEquals(3, maxDepth(testTree));
-    }
-
-    private int maxDepth(ThreeNode root) {
-        return root == null ? 0
-                : Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
 }
